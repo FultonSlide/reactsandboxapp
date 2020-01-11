@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Users extends Component {
-    render(){
-        const { users } = this.props;
-        const userList = users.map(user => {
-            return (
-                <div className='user' key={ user.id }>
-                    <div>Name: { user.name }</div>
-                    <div>Age: { user.age }</div>
-                    <div>Belt: { user.belt }</div>
-                </div>
-            )
-        });
-        return(
-            <div className="user-list">
-                { userList }
-            </div>
-        )
-    }
+const Users = ({users}) => {
+    const userList = users.map(user => {
+        return user.age > 20 ? (
+           <div className='user' key={ user.id }>
+                <div>Name: { user.name }</div>
+                <div>Age: { user.age }</div>
+                <div>Belt: { user.belt }</div>
+            </div> 
+        ) : null;
+    });
+    
+    return(
+        <div className="user-list">
+            { userList }
+        </div>
+    )
 }
 
 export default Users;
